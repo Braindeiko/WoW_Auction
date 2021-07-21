@@ -106,7 +106,6 @@ Class Auction
 	
 	tapPost()
 	{
-		
 		This.setTaps()
 		This.setLastCoor()
 		This.setSleep()
@@ -122,7 +121,6 @@ Class Auction
 		This.HumanMistake()
 		This.nClicks++
 		This.lastClick := A_TickCount
-		
 	}
 	
 	setTaps()
@@ -205,6 +203,6 @@ CreateWindow(titleWindow := False, dirWindow := False){
 	global Window := new Window(titleWindow, dirWindow)
 	Window.Open()
 	Window.Wait()
-	Window.Activate()
+	; Window.Activate()
 	; Window.Get()
 }
