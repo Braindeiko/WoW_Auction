@@ -95,7 +95,7 @@ Class Auction
 	foundButton()
 	{
 		
-		If(Image(A, "buttonPost", "buttonCancelar", 0, Window.H*0.4, Window.W, Window.H))
+		If(Image(A, "buttonPost", "buttonCancelar", Window.W*70/320, Window.H*0.4, Window.W, Window.H))
 		{
 			This.lastFound := A_TickCount
 			Return True
