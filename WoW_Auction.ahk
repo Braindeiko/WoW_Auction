@@ -1,5 +1,6 @@
 ﻿#NoEnv
-SendMode Input 
+SendMode Input
+#SingleInstance Force
 SetWorkingDir %A_ScriptDir% 
 
 ; #Include <Functions>
@@ -94,8 +95,8 @@ Class Auction
 	
 	foundButton()
 	{
-		
-		If(Image(A, "buttonPost", "buttonCancelar", Window.W*70/320, Window.H*0.4, Window.W, Window.H))
+
+		If(Image(A, ["buttonPost", "buttonCancelar"], Window.W*70/320, Window.H*0.4, Window.W, Window.H))
 		{
 			This.lastFound := A_TickCount
 			Return True
@@ -125,10 +126,10 @@ Class Auction
 	
 	setTaps()
 	{
-		If(This.Mode = "UseMacro")
-				This.nTaps := Rand(3, 8)
-		Else If(This.Mode = "UseClick")
-				This.nTaps := 1
+		If(This.Mode == "UseMacro")
+			This.nTaps := Rand(2, 5)
+		Else If(This.Mode == "UseClick")
+			This.nTaps := 1
 	}
 	
 	setLastCoor()
@@ -137,13 +138,13 @@ Class Auction
 		{
 			This.nClicks := 0, This.ClicksRandom := Rand(25, 50)
 			
-			If(This.Mode = "UseMacro")
+			If(This.Mode == "UseMacro")
 			{
 				This.lastCoorX := Rand(Window._X/2 + 50, Window._X - 50)
 				This.lastCoorY := Rand(Window._Y/3, Window._Y*2/3 - 10)
 			}
 			Else
-				If(This.Mode = "UseClick")
+				If(This.Mode == "UseClick")
 				{
 					This.lastCoorX := This.X + Rand(-5, 5)
 					This.lastCoorY := This.Y + Rand(1, 6)
@@ -155,22 +156,24 @@ Class Auction
 	
 	setSleep()
 	{
-		If(This.Mode = "UseMacro")
-				Sleep(10, 150)
-		Else If(This.Mode = "UseClick")
-				Sleep(130, 230)
+		If(This.Mode == "UseMacro")
+			Sleep(10, 150)
+		Else If(This.Mode == "UseClick")
+			Sleep(130, 230)
 	}
 	
 	buttonTap()
 	{
-		If(This.Mode = "UseMacro")
+		If(This.Mode == "UseMacro")
 		{
 			SendClick(This.lastCoorX, This.lastCoorY, "WU", False)
 		}
-		Else If(This.Mode = "UseClick")
+		Else If(This.Mode == "UseClick")
 		{
-			Window.Activate()
+			Print("UseCursor")
+			useCursor := True
 			SendClick(This.lastCoorX, This.lastCoorY,, False)
+			useCursor := False
 		}
 	}
 	
