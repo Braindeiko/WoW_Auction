@@ -15,13 +15,13 @@ Auction.Init()
 ;Botones ———————————————————————————————————————————————————————————
 ;———————————————————————————————————————————————————————————————————
 
-Numpad1:: Auction.Post("UseMacro") Return
+; Numpad1:: Auction.Post("UseMacro") Return
 
-Numpad2:: Auction.Post("UseClick") Return
+; Numpad2:: Auction.Post("UseClick") Return
 
-Numpad3:: reload Return
+; Numpad3:: reload Return
 
-NumpadDot:: exitapp
+NumpadEnter:: exitapp
 
 ;Interfaz ——————————————————————————————————————————————————————————
 ;———————————————————————————————————————————————————————————————————
